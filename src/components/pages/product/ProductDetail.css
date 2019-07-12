@@ -1,0 +1,11 @@
+.select-img:hover {
+  cursor: pointer;
+  border: 2px solid #021a40;
+}
+
+.ui.tiny.images .image,
+.ui.tiny.images img,
+.ui.tiny.images svg {
+  width: 80px;
+  height: 80px;
+}

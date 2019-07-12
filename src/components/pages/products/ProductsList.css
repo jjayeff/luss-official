@@ -1,0 +1,40 @@
+.new-arrival {
+  background: #212121;
+  color: #fff;
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.items {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.ui.card:first-child {
+  margin: 1em 0;
+}
+
+.ui.card:last-child {
+  margin: 1em 0;
+}
+
+.ui.card {
+  width: 100%;
+}
+
+@media screen and (max-width: 799px) {
+  .items {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
