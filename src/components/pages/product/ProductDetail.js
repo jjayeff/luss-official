@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchProduct } from '../../../reducers/productReducer';
-import Loader from '../../Loader';
 import './ProductDetail.css';
 
 export class ProductDetail extends Component {
@@ -9,9 +6,6 @@ export class ProductDetail extends Component {
     img: null
   };
 
-  componentDidMount() {
-    this.props.fetchProduct(this.props.id);
-  }
   renderImage(img) {
     if (img !== 'null')
       return (
@@ -29,8 +23,6 @@ export class ProductDetail extends Component {
   }
 
   render() {
-    if (!this.props.product || this.props.product.id !== Number(this.props.id))
-      return <Loader />;
     return (
       <div>
         <div className="ui tiny images centered">
@@ -51,13 +43,4 @@ export class ProductDetail extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    product: state.products.product
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { fetchProduct }
-)(ProductDetail);
+export default ProductDetail;

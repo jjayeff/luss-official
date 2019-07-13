@@ -54,7 +54,13 @@ export class ProductsList extends Component {
   render() {
     if (!this.props.products) return <Loader />;
 
-    return <div className="items">{this.renderProductList()}</div>;
+    return (
+      <section className="products">
+        <div className="ui container">
+          <div className="items">{this.renderProductList()}</div>
+        </div>
+      </section>
+    );
   }
 }
 

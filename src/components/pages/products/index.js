@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProductsList from './ProductsList';
+import Navbar from '../../Navbar';
 
-function index() {
-  return (
-    <div>
-      <ProductsList />
-    </div>
-  );
+export class index extends Component {
+  componentDidMount() {
+    document.title = 'Luss Official | Products';
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar transparent />
+        <ProductsList />
+      </React.Fragment>
+    );
+  }
 }
 
 export default index;

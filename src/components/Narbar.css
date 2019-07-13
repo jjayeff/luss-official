@@ -1,0 +1,11 @@
+.main-header {
+  background: url(/img/cover1.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 660px;
+  color: #fff;
+}
+
+.black {
+  background: #333;
+}

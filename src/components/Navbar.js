@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import './Narbar.css';
 
 export class Navbar extends Component {
   render() {
     return (
-      <div className="ui container">
-        <div className="ui large secondary pointing menu">
-          <NavLink exact to="/" className="item">
-            Home
-          </NavLink>
-          <NavLink to="/products" className="item">
-            Produsts
-          </NavLink>
-          <div className="right menu">
-            <div className="item">
-              <Link to="/">
-                <i className="th flag" />
-              </Link>
-              <Link to="/">
-                <i className="gb uk flag" />
-              </Link>
+      <header className={this.props.transparent ? '' : 'main-header'}>
+        <div className={this.props.transparent ? 'black' : ''}>
+          <div
+            className={`ui container large secondary pointing menu ${
+              this.props.transparent ? 'inverted' : ''
+            }`}
+          >
+            <NavLink exact to="/" className="item">
+              Home
+            </NavLink>
+            <NavLink to="/products" className="item">
+              Produsts
+            </NavLink>
+            <div className="right menu">
+              <div className="item">
+                <Link to="/">
+                  <i className="th flag" />
+                </Link>
+                <Link to="/">
+                  <i className="gb uk flag" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }

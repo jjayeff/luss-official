@@ -1,0 +1,20 @@
+.gallery-item {
+  display: grid;
+  grid-gap: 0.5em;
+}
+
+.gallery-item img {
+  width: 100%;
+}
+
+@media screen and (max-width: 799px) {
+  .gallery-item {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .gallery-item {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
