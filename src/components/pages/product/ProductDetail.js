@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import './ProductDetail.css';
 
 export class ProductDetail extends Component {
-  state = {
-    img: null
-  };
+  componentDidMount() {
+    document.title = `${this.props.product.name} | Luss Official`;
+  }
 
-  renderImage(img) {
+  state = { img: null };
+
+  renderImage(img, i) {
     if (img !== 'null')
       return (
         <img
+          key={i}
           className="select-img ui image"
           src={img}
           alt={this.props.product.name}
@@ -23,18 +26,21 @@ export class ProductDetail extends Component {
   }
 
   render() {
+    const imgs = [
+      this.props.product.img_0,
+      this.props.product.img_1,
+      this.props.product.img_2,
+      this.props.product.img_3,
+      this.props.product.img_4,
+      this.props.product.img_5
+    ];
     return (
-      <div>
-        <div className="ui tiny images centered">
-          {this.renderImage(this.props.product.img_0)}
-          {this.renderImage(this.props.product.img_1)}
-          {this.renderImage(this.props.product.img_2)}
-          {this.renderImage(this.props.product.img_3)}
-          {this.renderImage(this.props.product.img_4)}
-          {this.renderImage(this.props.product.img_5)}
+      <div className="image-detail">
+        <div className="image-slide ui tiny images centered">
+          {imgs.map((img, i) => this.renderImage(img, i))}
         </div>
         <img
-          className="ui image"
+          className="image-show"
           src={this.state.img ? this.state.img : this.props.product.img_0}
           alt={this.props.product.name}
         />

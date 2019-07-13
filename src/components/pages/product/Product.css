@@ -1,16 +1,18 @@
 .item-detail {
   display: grid;
   grid-gap: 1em;
-  margin: 10px 0;
+  margin: 1em 0;
+  padding: 1em;
+  background: #fff;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 999px) {
   .item-detail {
     grid-template-columns: 1fr;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   .item-detail {
     grid-template-columns: 2fr 3fr;
   }

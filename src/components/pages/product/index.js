@@ -4,8 +4,9 @@ import { fetchProduct } from '../../../reducers/productReducer';
 import ProductDetail from './ProductDetail';
 import ProductSelect from './ProductSelect';
 import Loader from '../../Loader';
-import './Product.css';
 import Navbar from '../../Navbar';
+import './Product.css';
+import ProductBreadcrumb from './ProductBreadcrumb';
 
 export class Product extends Component {
   componentDidMount() {
@@ -27,12 +28,15 @@ export class Product extends Component {
     return (
       <React.Fragment>
         <Navbar transparent />
-        <div className="ui container">
-          <div className="item-detail">
-            <ProductDetail product={this.props.product} />
-            <ProductSelect product={this.props.product} />
+        <section className="product">
+          <div className="ui container">
+            <ProductBreadcrumb product={this.props.product} />
+            <div className="item-detail">
+              <ProductDetail product={this.props.product} />
+              <ProductSelect product={this.props.product} />
+            </div>
           </div>
-        </div>
+        </section>
       </React.Fragment>
     );
   }

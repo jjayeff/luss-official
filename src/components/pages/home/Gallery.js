@@ -27,14 +27,14 @@ export class Gallery extends Component {
     'https://scontent.fbkk12-3.fna.fbcdn.net/v/t1.0-9/45493700_252453522098275_7797968070298828800_n.jpg?_nc_cat=102&_nc_oc=AQnc0ajPTzKDwpcHJF52DRxdoT30kIIKnNKsH5hkOdIz8vpi5jhYFHas7GTP9ZFfEzTwELSQ7PknfcnSj-Hxe5OL&_nc_ht=scontent.fbkk12-3.fna&oh=7b0fe02aa4088ca1626073a43d2938dd&oe=5DBC5C36'
   ];
   renderImg(imgs) {
-    return imgs.map(img => <img src={img} alt={img} />);
+    return imgs.map((img, i) => <img key={i} src={img} alt={img} />);
   }
   render() {
     return (
       <section className="gallery">
         <div className="ui container">
-          <h3 class="ui top attached header">#Gallery</h3>
-          <div class="ui attached segment">
+          <h3 className="ui top attached header">#Gallery</h3>
+          <div className="ui attached segment">
             <div className="gallery-item">
               <div>{this.renderImg(this.img1)}</div>
               <div>{this.renderImg(this.img2)}</div>

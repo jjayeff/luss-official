@@ -6,6 +6,17 @@
 .ui.tiny.images .image,
 .ui.tiny.images img,
 .ui.tiny.images svg {
-  width: 80px;
+  width: auto;
   height: 80px;
+}
+
+.image-show {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+}
+
+.image-slide {
+  text-align: center;
 }

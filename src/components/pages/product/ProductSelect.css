@@ -1,3 +1,40 @@
-.item-select {
-  border: 1px solid #000;
+.product-center {
+  text-align: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .product-content-detail {
+    height: 380px;
+  }
+}
+
+.content label {
+  margin-right: 20px;
+}
+
+.content {
+  color: #757575;
+  margin: 20px 0;
+}
+
+.quantity .title {
+  color: #757575;
+}
+
+.quantity .button {
+  margin: 0 10px;
+}
+
+.ui.horizontal.statistic > .label,
+.ui.horizontal.statistics .statistic > .label {
+  margin: 0 0.75em 0 0.75em;
+}
+
+.ui.horizontal.statistic > .label,
+.ui.horizontal.statistics .statistic > .label {
+  color: #757575;
+}
+
+.price-sale {
+  text-decoration: line-through;
 }

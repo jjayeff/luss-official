@@ -25,7 +25,7 @@ function Blog() {
   return (
     <section className="blog">
       <div className="ui container">
-        <h3 class="ui top attached header" style={{ marginTop: '10px' }}>
+        <h3 className="ui top attached header" style={{ marginTop: '10px' }}>
           #Blog
         </h3>
         <div className="blog-item">{renderCard()}</div>
