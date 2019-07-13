@@ -30,7 +30,10 @@ export class ProductsList extends Component {
   }
 
   renderProductList() {
-    return this.props.products.map(product => {
+    const array = this.props.type
+      ? this.props.products.filter(test => test.type === this.props.type)
+      : this.props.products;
+    return array.map(product => {
       return (
         <div key={product.id} className="ui card">
           <Link to={`/product/${product.id}`}>

@@ -9,7 +9,7 @@ export class ProductDetail extends Component {
   state = { img: null };
 
   renderImage(img, i) {
-    if (img !== 'null')
+    if (img)
       return (
         <img
           key={i}

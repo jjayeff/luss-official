@@ -18,6 +18,9 @@ export class Navbar extends Component {
             <NavLink to="/products" className="item">
               Produsts
             </NavLink>
+            <NavLink to="/payment" className="item">
+              Confirm Payment
+            </NavLink>
             <div className="right menu">
               <div className="item">
                 <Link to="/">

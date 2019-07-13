@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import ProductsList from './ProductsList';
 import Navbar from '../../Navbar';
+import PaymentForm from './PaymentForm';
 
 export class index extends Component {
-  componentDidMount() {
-    document.title = 'Luss Official | Products';
-  }
+  onSubmit = formValues => {
+    console.log(formValues);
+  };
 
   render() {
     return (
       <React.Fragment>
         <Navbar transparent />
-        <ProductsList type={this.props.match.params.type} />
+        <PaymentForm onSubmit={this.onSubmit} />
       </React.Fragment>
     );
   }

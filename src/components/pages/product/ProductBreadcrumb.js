@@ -13,7 +13,7 @@ export default function ProductBreadcrumb({ product }) {
           Store
         </Link>
         <i className="right angle icon divider" />
-        <Link to="/products" className="section">
+        <Link to={`/products/${product.type}`} className="section">
           {product.type}
         </Link>
         <i className="right angle icon divider" />
