@@ -11,7 +11,7 @@ export class ProductsList extends Component {
   }
 
   renderImageList(product) {
-    return product.img_1 !== 'null' ? (
+    return product.img_1 ? (
       <React.Fragment>
         <img
           src={product.img_0}

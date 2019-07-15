@@ -1,37 +1,46 @@
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './Narbar.css';
 import PopupExample from './core/Popup';
 
 export class Navbar extends Component {
-  state = {};
+  renderCartContent() {
+    return this.props.carts.map((cart, i) => {
+      if (i > 4) return <div key={i} />;
+      return (
+        <div className="pop-up-item" key={i}>
+          <div className="left">
+            <img src={cart.detail.img_0} alt="" style={{ height: '40px' }} />
+            <div className="detail">
+              <p>
+                <b>{cart.detail.name}</b>
+                <br />
+                {cart.detail.color} ({cart.size})
+              </p>
+            </div>
+          </div>
+          <div className="right">
+            <p>
+              <b>฿{cart.detail.price}</b>
+              <br />
+              <a href="#!">ลบ</a>
+            </p>
+          </div>
+        </div>
+      );
+    });
+  }
   render() {
     const cart = (
       <div className="pop-up-items">
         <div className="header">สินค้าที่เพิ่งเพิ่มไปใน</div>
-        <div className="content">
-          <div className="pop-up-item">
-            <div className="left">
-              <img src="/img/blog1.jpg" alt="" style={{ height: '40px' }} />
-              <div className="detail">
-                <p>
-                  <b>Preorder Adidas Falcon แท้</b>
-                  <br />
-                  ตัวเลือกสินค้า: 7.5-9.5UK,ขาวลิซ่า
-                </p>
-              </div>
-            </div>
-            <div className="right">
-              <p>
-                <b>฿3,690</b>
-                <br />
-                <a href="#!">ลบ</a>
-              </p>
-            </div>
-          </div>
-        </div>
+        <div className="content">{this.renderCartContent()}</div>
         <div className="footer">
-          <p>2 สินค้าในตระกร้า</p>
+          <p>
+            {this.props.carts.length > 5 ? this.props.carts.length - 5 : 0}{' '}
+            สินค้าในตระกร้า
+          </p>
           <button className="mini ui button red">ดูรถเข็นทั้งหมด</button>
         </div>
       </div>
@@ -57,10 +66,12 @@ export class Navbar extends Component {
               <PopupExample
                 content={cart}
                 trigger={
-                  <Link to="/" className="item">
+                  <NavLink to="/cart" className="item">
                     <i className="shopping cart icon" />
-                    <p className="shopee-cart-number-badge">1</p>
-                  </Link>
+                    <p className="cart-number-badge">
+                      {this.props.carts.length}
+                    </p>
+                  </NavLink>
                 }
                 position="bottom right"
                 hoverable
@@ -73,4 +84,14 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapStateToProps = state => {
+  return {
+    carts: state.products.carts,
+    cart: state.products.cart
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar);

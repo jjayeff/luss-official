@@ -3,11 +3,19 @@ import './ProductSelect.css';
 
 export class ProductSelect extends Component {
   state = {
+    detail: this.props.product,
     color: this.props.product.color,
     delivery: 'Free',
     size: null,
-    quantity: 1
+    quantity: 1,
+    complete: true
   };
+
+  componentDidMount() {
+    const { size } = this.props.product;
+    var array = size.split(',');
+    this.setState({ size: array[0] });
+  }
 
   colorCheck(var1, var2) {
     if (var1 === var2) return 'red';
@@ -125,7 +133,10 @@ export class ProductSelect extends Component {
           </div>
         </div>
         <div className="ui bottom attached segment product-center">
-          <button className="ui button red">
+          <button
+            className="ui button red"
+            onClick={() => this.props.onAddToCart(this.state)}
+          >
             <i className="cart shopping icon" />
             Add on Cart
           </button>

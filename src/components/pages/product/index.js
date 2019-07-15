@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProduct } from '../../../reducers/productReducer';
+import { fetchProduct, addCart } from '../../../reducers/productReducer';
+import uuid from 'uuid/v1';
 import ProductDetail from './ProductDetail';
 import ProductSelect from './ProductSelect';
 import Loader from '../../Loader';
@@ -12,6 +13,11 @@ export class Product extends Component {
   componentDidMount() {
     this.props.fetchProduct(this.props.match.params.id);
   }
+
+  onAddToCart = data => {
+    data.id = uuid();
+    this.props.addCart(data);
+  };
 
   render() {
     if (
@@ -33,7 +39,10 @@ export class Product extends Component {
             <ProductBreadcrumb product={this.props.product} />
             <div className="item-detail">
               <ProductDetail product={this.props.product} />
-              <ProductSelect product={this.props.product} />
+              <ProductSelect
+                product={this.props.product}
+                onAddToCart={this.onAddToCart}
+              />
             </div>
           </div>
         </section>
@@ -50,5 +59,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchProduct }
+  { fetchProduct, addCart }
 )(Product);
