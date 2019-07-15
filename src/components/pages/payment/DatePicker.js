@@ -22,7 +22,7 @@ export default class renderDatePicker extends React.Component {
   };
 
   state = {
-    selectedDate: null
+    selectedDate: new Date()
   };
 
   componentWillMount() {

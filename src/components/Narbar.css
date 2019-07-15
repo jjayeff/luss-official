@@ -9,3 +9,57 @@
 .black {
   background: #333;
 }
+
+.shopee-cart-number-badge {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  min-width: 2em;
+  min-height: 2em;
+  padding: 0.5em !important;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 500rem;
+  background-color: #db2828 !important;
+  border-color: #db2828 !important;
+  color: #fff !important;
+  font-size: 0.75714286rem;
+}
+
+.pop-up-items {
+  width: 350px;
+  margin: 10px 0;
+}
+
+.pop-up-items .header {
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.pop-up-items .content .pop-up-item .left {
+  float: left;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.pop-up-items .content .pop-up-item .right {
+  float: right;
+  text-align: right;
+}
+
+.pop-up-items .content .pop-up-item .left .detail {
+  margin: 0 10px;
+}
+
+.pop-up-items .footer {
+  content: '';
+  clear: both;
+  display: table;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+.pop-up-items .footer p {
+  color: rgba(0, 0, 0, 0.7);
+}

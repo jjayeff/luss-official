@@ -53,21 +53,23 @@ export class PaymentForm extends Component {
           className="ui form error"
         >
           <Field name="order" component={this.renderInput} label="Order Name" />
-          <div className="fields three">
+          <div className="fields two">
             <Field name="name" component={this.renderInput} label="Name" />
             <Field name="email" component={this.renderInput} label="Email" />
+          </div>
+          <div className="fields two">
             <Field
               name="telephone"
               component={this.renderInput}
               label="Telephone"
             />
-          </div>
-          <div className="fields two">
             <Field
               name="amount"
               component={this.renderInput}
               label="Baht Amount"
             />
+          </div>
+          <div className="fields two">
             <Field
               name="bank"
               component={this.renderSelector}
