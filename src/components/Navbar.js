@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './Narbar.css';
 import PopupExample from './core/Popup';
@@ -41,7 +41,9 @@ export class Navbar extends Component {
             {this.props.carts.length > 5 ? this.props.carts.length - 5 : 0}{' '}
             สินค้าในตระกร้า
           </p>
-          <button className="mini ui button red">ดูรถเข็นทั้งหมด</button>
+          <Link to="/cart" className="mini ui button red">
+            ดูรถเข็นทั้งหมด
+          </Link>
         </div>
       </div>
     );
@@ -63,15 +65,18 @@ export class Navbar extends Component {
               Confirm Payment
             </NavLink>
             <div className="right menu">
+              <Link to="/account/login" className="item">
+                <i className="unlock icon" />
+              </Link>
               <PopupExample
                 content={cart}
                 trigger={
-                  <NavLink to="/cart" className="item">
+                  <Link to="/cart" className="item">
                     <i className="shopping cart icon" />
                     <p className="cart-number-badge">
                       {this.props.carts.length}
                     </p>
-                  </NavLink>
+                  </Link>
                 }
                 position="bottom right"
                 hoverable

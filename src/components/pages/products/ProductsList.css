@@ -27,13 +27,13 @@
   width: 100%;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 999px) {
   .items {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1000px) {
   .items {
     grid-template-columns: repeat(4, 1fr);
   }
