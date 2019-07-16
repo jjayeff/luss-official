@@ -1,10 +1,61 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import faker from 'faker';
 import './Narbar.css';
 import PopupExample from './core/Popup';
 
 export class Navbar extends Component {
+  renderUser() {
+    const userDetail = () => (
+      <div className="ui middle aligned selection list">
+        <div className="item">
+          <i className="large user outline middle aligned icon" />
+          <div className="content">
+            <div className="header">My Account</div>
+          </div>
+        </div>
+        <div className="item">
+          <i className="large paper plane outline middle aligned icon" />
+          <div className="content">
+            <div className="header">My Order</div>
+          </div>
+        </div>
+        <div className="item">
+          <i className="large sign-out middle aligned icon" />
+          <div className="content">
+            <div className="header">Logout</div>
+          </div>
+        </div>
+      </div>
+    );
+    if (this.props.user)
+      return (
+        <PopupExample
+          content={userDetail}
+          trigger={
+            <div className="item" style={{ cursor: 'pointer' }}>
+              <img
+                className="ui avatar image"
+                src={faker.image.avatar()}
+                alt=""
+              />
+              <span style={{ textTransform: 'capitalize' }}>
+                {this.props.user.firstName}
+              </span>
+            </div>
+          }
+          position="bottom right"
+          hoverable
+        />
+      );
+    else
+      return (
+        <Link to="/account/login" className="item">
+          <i className="unlock icon" />
+        </Link>
+      );
+  }
   renderCartContent() {
     return this.props.carts.map((cart, i) => {
       if (i > 4) return <div key={i} />;
@@ -65,9 +116,6 @@ export class Navbar extends Component {
               Confirm Payment
             </NavLink>
             <div className="right menu">
-              <Link to="/account/login" className="item">
-                <i className="unlock icon" />
-              </Link>
               <PopupExample
                 content={cart}
                 trigger={
@@ -81,6 +129,7 @@ export class Navbar extends Component {
                 position="bottom right"
                 hoverable
               />
+              {this.renderUser()}
             </div>
           </div>
         </div>
@@ -91,6 +140,7 @@ export class Navbar extends Component {
 
 const mapStateToProps = state => {
   return {
+    user: state.auth.user,
     carts: state.products.carts,
     cart: state.products.cart
   };

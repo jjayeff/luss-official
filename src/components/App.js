@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { login_account } from '../reducers/authReducer';
+import { login_account, fetchUser } from '../reducers/authReducer';
 import history from '../history';
 import Home from './pages/home/index';
 import Produsts from './pages/products/index';
@@ -15,8 +15,11 @@ import './App.css';
 
 export class App extends Component {
   componentDidMount() {
-    const localData = JSON.parse(localStorage.getItem('ID'));
-    if (localData) this.props.login_account(localData);
+    const localData = JSON.parse(localStorage.getItem('Session'));
+    if (localData) {
+      this.props.login_account(localData);
+      this.props.fetchUser(localData);
+    }
   }
   render() {
     return (
@@ -38,5 +41,5 @@ export class App extends Component {
 
 export default connect(
   null,
-  { login_account }
+  { login_account, fetchUser }
 )(App);

@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import history from '../../../../history';
 import { connect } from 'react-redux';
-import { login_account } from '../../../../reducers/authReducer';
+import { login_account, fetchUser } from '../../../../reducers/authReducer';
 import Login from './Login';
 import Navbar from '../../../Navbar';
 
 export class SignIn extends Component {
   onSubmit = data => {
-    this.props.login_account(data);
-    localStorage.setItem('ID', JSON.stringify(data));
+    const { accessToken } = data;
+    this.props.login_account(accessToken);
+    this.props.fetchUser(accessToken);
+    localStorage.setItem('Session', JSON.stringify(accessToken));
+    history.push('/products');
   };
 
   render() {
@@ -22,5 +26,5 @@ export class SignIn extends Component {
 
 export default connect(
   null,
-  { login_account }
+  { login_account, fetchUser }
 )(SignIn);

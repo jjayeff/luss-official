@@ -63,3 +63,8 @@
 .pop-up-items .footer p {
   color: rgba(0, 0, 0, 0.7);
 }
+
+header .ui.avatar.image {
+  width: 1.5em;
+  height: 1.5em;
+}
