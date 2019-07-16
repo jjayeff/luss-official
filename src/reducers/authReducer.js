@@ -1,9 +1,15 @@
 import luss from '../apis/luss';
+import history from '../history';
 export const LOGIN_USER = 'luss/LOGIN_USER';
+export const LOGOUT_USER = 'luss/LOGOUT_USER';
 export const FETCH_USER = 'luss/FETCH_USER';
 
 export const login_account = data => async dispatch => {
   dispatch({ type: LOGIN_USER, payload: data });
+};
+export const logout_account = () => async dispatch => {
+  dispatch({ type: LOGOUT_USER, payload: null });
+  history.push('/');
 };
 
 export const fetchUser = accessToken => async dispatch => {
@@ -28,6 +34,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         accessToken: action.payload
+      };
+    case LOGOUT_USER:
+      return {
+        ...state,
+        user: null,
+        accessToken: null
       };
     case FETCH_USER:
       return {

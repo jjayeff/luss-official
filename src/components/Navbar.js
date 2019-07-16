@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout_account } from '../reducers/authReducer';
 import faker from 'faker';
 import './Narbar.css';
 import PopupExample from './core/Popup';
 
 export class Navbar extends Component {
+  onLogout() {
+    localStorage.removeItem('Session');
+    this.props.logout_account();
+  }
   renderUser() {
     const userDetail = () => (
       <div className="ui middle aligned selection list">
@@ -21,7 +26,11 @@ export class Navbar extends Component {
             <div className="header">My Order</div>
           </div>
         </div>
-        <div className="item">
+        <div
+          className="item"
+          style={{ cursor: 'pointer' }}
+          onClick={() => this.onLogout()}
+        >
           <i className="large sign-out middle aligned icon" />
           <div className="content">
             <div className="header">Logout</div>
@@ -117,6 +126,7 @@ export class Navbar extends Component {
             </NavLink>
             <div className="right menu">
               <PopupExample
+                style={{ cursor: 'pointer' }}
                 content={cart}
                 trigger={
                   <Link to="/cart" className="item">
@@ -148,5 +158,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  null
+  { logout_account }
 )(Navbar);
