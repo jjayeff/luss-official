@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout_account } from '../reducers/authReducer';
+import { deleteCart } from '../reducers/productReducer';
 import faker from 'faker';
 import './Narbar.css';
 import PopupExample from './core/Popup';
@@ -84,7 +85,9 @@ export class Navbar extends Component {
             <p>
               <b>฿{cart.detail.price}</b>
               <br />
-              <a href="#!">ลบ</a>
+              <a href="#!" onClick={() => this.props.deleteCart(cart.id)}>
+                ลบ
+              </a>
             </p>
           </div>
         </div>
@@ -157,5 +160,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { logout_account }
+  { logout_account, deleteCart }
 )(Navbar);
