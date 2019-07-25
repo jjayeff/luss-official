@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login_account, fetchUser } from '../reducers/authReducer';
+import { fetchCarts } from '../reducers/productReducer';
 import history from '../history';
 import Home from './pages/home/index';
 import Produsts from './pages/products/index';
@@ -19,6 +20,7 @@ export class App extends Component {
     if (localData) {
       this.props.login_account(localData);
       this.props.fetchUser(localData);
+      this.props.fetchCarts(localData);
     }
   }
   render() {
@@ -41,5 +43,5 @@ export class App extends Component {
 
 export default connect(
   null,
-  { login_account, fetchUser }
+  { login_account, fetchUser, fetchCarts }
 )(App);

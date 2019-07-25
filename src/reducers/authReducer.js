@@ -7,6 +7,7 @@ export const FETCH_USER = 'luss/FETCH_USER';
 export const login_account = data => async dispatch => {
   dispatch({ type: LOGIN_USER, payload: data });
 };
+
 export const logout_account = () => async dispatch => {
   dispatch({ type: LOGOUT_USER, payload: null });
   history.push('/');

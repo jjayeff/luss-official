@@ -10,7 +10,7 @@ export default function Login({ onSubmit }) {
       </h3>
       <div className="ui attached header">
         <div className="ui placeholder segment">
-          <div className="ui two column very relaxed stackable grid">
+          <div className="ui two column very relaxed grid">
             <div className="column">
               <LoginForm onSubmit={onSubmit} />
             </div>

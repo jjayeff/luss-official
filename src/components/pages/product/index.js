@@ -16,7 +16,7 @@ export class Product extends Component {
 
   onAddToCart = data => {
     data.id = uuid();
-    this.props.addCart(data);
+    this.props.addCart(data, this.props.auth, this.props.carts);
   };
 
   render() {
@@ -53,7 +53,9 @@ export class Product extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    product: state.products.product
+    product: state.products.product,
+    auth: state.auth,
+    carts: state.products.carts
   };
 };
 

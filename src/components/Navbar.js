@@ -126,7 +126,6 @@ export class Navbar extends Component {
             </NavLink>
             <div className="right menu">
               <PopupExample
-                style={{ cursor: 'pointer' }}
                 content={cart}
                 trigger={
                   <Link to="/cart" className="item">

@@ -13,7 +13,7 @@ export class CartList extends Component {
       detail: cart.detail,
       complete: !complete
     };
-    this.props.editCart(req);
+    this.props.editCart(req, this.props.carts);
   }
   renderSelectSize(sizes) {
     var array = sizes.split(',');
@@ -77,7 +77,14 @@ export class CartList extends Component {
           </td>
           <td>฿{cart.detail.price * cart.quantity}</td>
           <td>
-            <p>ลบ</p>
+            <button
+              className={`ui negative button ${
+                this.props.loading ? 'loading' : ''
+              }`}
+              onClick={() => this.props.deleteCart(cart.id)}
+            >
+              Delete
+            </button>
           </td>
         </tr>
       );
