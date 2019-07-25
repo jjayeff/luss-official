@@ -22,14 +22,18 @@ export const fetchProduct = id => async dispatch => {
 
 export const fetchCarts = accessToken => async dispatch => {
   const user = await luss.get(`/api/luss/user/${accessToken}`);
-  const response = await luss.get(`/api/luss/carts/${user.data[0].id}`);
+  let result = [];
 
-  const result = await response.data.map(async value => {
-    value.complete = value.complete ? true : false;
-    const res = await luss.get(`/api/luss/${value.detail_id}`);
-    value.detail = res.data[0];
-    return await value;
-  });
+  if (user.data[0]) {
+    const response = await luss.get(`/api/luss/carts/${user.data[0].id}`);
+
+    result = await response.data.map(async value => {
+      value.complete = value.complete ? true : false;
+      const res = await luss.get(`/api/luss/${value.detail_id}`);
+      value.detail = res.data[0];
+      return await value;
+    });
+  }
 
   Promise.all(result).then(results => {
     return dispatch({ type: FETCH_CART, payload: results });

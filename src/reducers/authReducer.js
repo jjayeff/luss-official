@@ -22,6 +22,12 @@ export const fetchUser = accessToken => async dispatch => {
   });
 };
 
+export const createUser = data => async dispatch => {
+  const response = await luss.post(`/api/luss/users/create`, data);
+
+  dispatch({ type: FETCH_USER, response });
+};
+
 const initialState = {
   user: null,
   accessToken: null,
