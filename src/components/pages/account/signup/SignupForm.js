@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { province, district } from './data';
+import { province_th } from './data';
 
 export class SignUpForm extends Component {
   state = {
@@ -33,16 +33,27 @@ export class SignUpForm extends Component {
       </div>
     );
   };
-  renderSelect = ({ keyState, label, meta, option, placeholder }) => {
+
+  renderSelect = ({
+    keyState,
+    input,
+    label,
+    meta,
+    option,
+    placeholder,
+    stateValue
+  }) => {
     const className = `field ${meta.error && meta.touched ? 'error' : ''}`;
     return (
       <div className={className}>
         <label>{label}</label>
         <select
+          {...input}
           onChange={e => this.setState({ [keyState]: e.target.value })}
           disabled={option.length ? false : true}
+          value={stateValue}
         >
-          <option value="" disabled selected>
+          <option value="" disabled>
             {placeholder}
           </option>
           {option.sort().map(value => (
@@ -108,16 +119,19 @@ export class SignUpForm extends Component {
           <Field
             name="province"
             component={this.renderSelect}
-            option={province}
+            option={province_th
+              .map(value => value.province)
+              .filter((value, index, self) => self.indexOf(value) === index)}
             placeholder="จังหวัด"
             keyState="province"
+            stateValue={this.state.province}
           />
           <Field
             name="district"
             component={this.renderSelect}
             option={
               this.state.province
-                ? district
+                ? province_th
                     .filter(value => value.province === this.state.province)
                     .map(value => value.district)
                     .filter(
@@ -127,13 +141,14 @@ export class SignUpForm extends Component {
             }
             placeholder="เขต/อำเภอ"
             keyState="district"
+            stateValue={this.state.district}
           />
           <Field
             name="postalcode"
             component={this.renderSelect}
             option={
               this.state.district
-                ? district
+                ? province_th
                     .filter(value => value.district === this.state.district)
                     .map(value => value.postalcode)
                     .filter(
@@ -143,6 +158,7 @@ export class SignUpForm extends Component {
             }
             placeholder="รหัสไปรษณีย์"
             keyState="postalcode"
+            stateValue={this.state.postalcode}
           />
         </div>
         <Field
