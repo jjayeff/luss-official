@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createUser } from '../../../../reducers/authReducer';
 import Navbar from '../../../Navbar';
 import Signup from './Signup';
 
 export class SignIn extends Component {
   onSubmit = formValues => {
-    console.log(formValues);
+    this.props.createUser(formValues);
   };
 
   render() {
@@ -18,4 +19,7 @@ export class SignIn extends Component {
   }
 }
 
-export default connect(null)(SignIn);
+export default connect(
+  null,
+  { createUser }
+)(SignIn);
