@@ -1,0 +1,13 @@
+.userpage-sidebar {
+  grid-area: left;
+}
+.userpage-content {
+  grid-area: right;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'left right right right right right right right right right right right';
+  grid-gap: 5px;
+  padding: 10px;
+}

@@ -167,7 +167,7 @@ export class SignUpForm extends Component {
           type="password"
           component={this.renderInput}
           label="Password"
-          placeholder="Paddword"
+          placeholder="Password"
         />
         <Field
           name="confirmPassword"

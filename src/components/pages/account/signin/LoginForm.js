@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, SubmissionError } from 'redux-form';
+import md5 from 'md5';
 import luss from '../../../../apis/luss';
 
 export class LoginForm extends Component {
@@ -20,6 +21,7 @@ export class LoginForm extends Component {
   };
 
   onSubmit = async formValues => {
+    formValues.password = md5(formValues.password);
     this.setState({ isSubmit: true });
     await luss
       .post('/api/luss/users/login', formValues)

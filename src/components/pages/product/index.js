@@ -16,7 +16,8 @@ export class Product extends Component {
 
   onAddToCart = data => {
     data.id = uuid();
-    this.props.addCart(data, this.props.auth, this.props.carts);
+    if (this.props.auth.user)
+      this.props.addCart(data, this.props.auth, this.props.carts);
   };
 
   render() {

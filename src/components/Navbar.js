@@ -6,6 +6,7 @@ import { deleteCart } from '../reducers/productReducer';
 import faker from 'faker';
 import './Narbar.css';
 import PopupExample from './core/Popup';
+import history from '../history';
 
 export class Navbar extends Component {
   onLogout() {
@@ -18,7 +19,12 @@ export class Navbar extends Component {
         <div className="item">
           <i className="large user outline middle aligned icon" />
           <div className="content">
-            <div className="header">My Account</div>
+            <div
+              className="header"
+              onClick={() => history.push('/account/profile')}
+            >
+              My Account
+            </div>
           </div>
         </div>
         <div className="item">

@@ -139,6 +139,7 @@ export default (state = initialState, action) => {
     case EDIT_CART:
       return {
         ...state,
+        carts: null,
         cart: null
       };
     case EDIT_CART_SUCCESS:

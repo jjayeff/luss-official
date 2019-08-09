@@ -4,13 +4,16 @@ import { connect } from 'react-redux';
 import { login_account, fetchUser } from '../reducers/authReducer';
 import { fetchCarts } from '../reducers/productReducer';
 import history from '../history';
-import Home from './pages/home/index';
-import Produsts from './pages/products/index';
-import Produst from './pages/product/index';
-import Payment from './pages/payment/index';
-import Cart from './pages/cart/index';
-import SignIn from './pages/account/signin/index';
-import SignUp from './pages/account/signup/index';
+import Home from './pages/home';
+import Produsts from './pages/products';
+import Produst from './pages/product';
+import Payment from './pages/payment';
+import Cart from './pages/cart';
+import SignIn from './pages/account/signin';
+import SignUp from './pages/account/signup';
+import Profile from './pages/account/profile';
+import Address from './pages/account/address';
+import Password from './pages/account/password';
 
 import './App.css';
 
@@ -35,6 +38,9 @@ export class App extends Component {
           <Route path="/cart" exact component={Cart} />
           <Route path="/account/login" exact component={SignIn} />
           <Route path="/account/signup" exact component={SignUp} />
+          <Route path="/account/profile" exact component={Profile} />
+          <Route path="/account/address" exact component={Address} />
+          <Route path="/account/password" exact component={Password} />
         </Switch>
       </Router>
     );
